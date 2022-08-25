@@ -20,7 +20,7 @@ while True:
 
     with open("logs/log_%s.json" % count, "w+") as f:
         json.dump(data, f)
-    
+
     print("Wrote to logs/log_%s.json" % count)
     count += 1
 
