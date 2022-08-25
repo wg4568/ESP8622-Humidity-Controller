@@ -1,0 +1,82 @@
+<!--
+#define String  units       s
+#define int     interval    u
+-->
+
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Hygrometer Server</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8" />
+
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            .red {
+                color: red;
+            }
+
+            .nm {
+                margin: 0px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h3>Hygrometer Server</h3>
+
+        <p class="nm">
+            Temperature:
+            <span class="red">
+                <span id="temperature">--.--</span>&#176;[units]
+            </span>
+        </p>
+
+        <p class="nm">
+            Humidity:
+            <span class="red"><span id="humidity">--.--</span>%</span>
+        </p>
+
+        <p>
+            Heat Index:
+            <span class="red">
+                <span id="heatIndex">--.--</span>&#176;[units]
+            </span>
+        </p>
+
+        <p>View raw data: <a href="/data.json">data.json</a></p>
+    </body>
+
+    <script>
+        var interval = [interval];
+
+        function update() {
+            $.get("/data.json", (data) => {
+                console.log(data);
+
+                $("#temperature").text(data.temperature.toFixed(2));
+                $("#heatIndex").text(data.heatIndex.toFixed(2));
+                $("#humidity").text(data.humidity.toFixed(2));
+            });
+        }
+
+        $.get("/data.json", (data) => {
+            console.log(data);
+
+            $("#temperature").text(data.temperature.toFixed(2));
+            $("#heatIndex").text(data.heatIndex.toFixed(2));
+            $("#humidity").text(data.humidity.toFixed(2));
+        });
+
+        console.log(`Initialized with refresh interval of ${interval}ms`);
+
+        setInterval(update, interval);
+        update();
+    </script>
+</html>
