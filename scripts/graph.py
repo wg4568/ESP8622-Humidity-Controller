@@ -38,8 +38,14 @@ fig.add_shape(
     fillcolor="rgba(135,206,250,0.5)",
 )
 
-fig.add_scattergl(x=df.log, y=df.humidity, line={"color": "black"})
-fig.add_scattergl(x=df.log, y=df.humidity.where(df.status), line={"color": "red"})
+fig.add_scattergl(x=df.log, y=df.humidity, name="Off", line={"color": "red"})
+fig.add_scattergl(
+    x=df.log, y=df.humidity.where(df.status), name="On", line={"color": "green"}
+)
+
+fig.update_yaxes(title_text="Humidity (%)")
+fig.update_xaxes(title_text="Time (hrs)")
+fig.update_layout(title_text="Humidity vs Time", title_x=0.5)
 
 # Optional temperature graph
 # fig.add_scattergl(x=df.log, y=df.temperature, line={'color': 'blue'})
