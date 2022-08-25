@@ -1,4 +1,4 @@
-# parse.py
+# template.py
 # Converts HTML template into C++ function that can be used on the ESP8622
 
 from css_html_js_minify import html_minify
@@ -12,7 +12,7 @@ function = None
 width = 80
 
 if len(sys.argv) == 1:
-    print("Usage: parse.py <input file> [width] [func name]")
+    print("Usage: template.py <input file> [width] [func name]")
     print("  Input File (required) - html file for processing")
     print("  Width      (optional) - max width of output block (chars)")
     print("  Func Name  (optional) - name of function generated")
