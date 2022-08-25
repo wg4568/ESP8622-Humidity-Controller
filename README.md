@@ -16,6 +16,10 @@ Included with this repository are some useful scripts:
 
 Refer to comments in each script for additional information and useage.
 
-## Hardware
+## Images
 
-![Hardware Setup](/hardware.jpg)
+![Overnight Data](/images/plot.png)
+
+![Hardware Setup](/images/hardware.jpg)
+
+![Webserver](/images/webserver.png)
